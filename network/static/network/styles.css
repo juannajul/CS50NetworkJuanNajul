@@ -1,0 +1,622 @@
+@font-face {
+    font-family: "TrebuchetMS";
+    src: url(fonts/TrebuchetMS.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: "icons";
+    src: url("fonts/websymbols-regular-webfont.svg#WebSymbolsRegular") format('svg'),
+        url("fonts/websymbols-regular-webfont.eot");
+    src: url("fonts/websymbols-regular-webfont.eot?isfix") format("embedded-opentype"),/*arregla si carga el navegador y no se tiene esta fuente*/
+    url("fonts/websymbols-regular-webfont.woff") format("woff"),
+    url("fonts/websymbols-regular-webfont.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.clearfix{
+    float: none;
+    clear: both;
+}
+
+@font-face {
+    font-family: "BebasNeue";
+    src: url('fonts/BebasNeue.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#logo-title{
+    color: #71b053;
+}
+
+.content{
+    width: 72.2%;
+    height: 90vh;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+#post-content{
+    float: left;
+    width: 58%;
+}
+
+#profile-content{
+    width: 29%;
+    position: fixed;
+    float: right;
+    right: 13.5%;
+}
+
+#create-post, #users-following{
+    height: auto;
+    padding: 0px;
+    margin: 5px;
+    margin-left: 20px;
+    margin-top: 20px;
+    border: 1px solid rgba(68, 67, 67, 0.5);
+    border-radius: 3px;
+    box-shadow: -2px 0px 3px #ccc;
+}
+
+#post-title, #users-following-title{
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid rgba(68, 67, 67, 0.5);
+}
+
+#post-title h2, #users-following-title h2{
+    color: #71b053;
+    font-weight: bold;
+    font-family: 'BebasNeue';
+    letter-spacing: 1px;
+    margin-left: 10px;
+    line-height: 40px;
+    text-shadow: -2px 0px 2px #557c42;
+}
+
+.users-following-container{
+    width: 100%;
+    height: 150px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    transition: all 300ms;
+    
+}
+
+.user-following-container{
+    width: 100%;
+    height: 70px;
+    margin: 0 auto;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.219);
+}
+
+.user-following-container:hover{
+    background: rgba(173, 173, 173, 0.5);
+}
+
+.users-following-container .post-name h6{
+    margin-top: 15px;
+}
+
+#postContent, #postEditContent {
+    outline: 0;
+    border: none;
+    margin-top: 0px;
+    font-size: 19px;
+    resize: none;
+    overflow: hidden;
+    transition: all 300ms;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#postContent::placeholder,
+#postEditContent::placeholder{
+    color: #cfcfcf;
+}
+
+#postContent:focus,
+#postEditContent:focus {
+    outline: 0;
+    border: none;
+    box-shadow: none;
+    transition: all 300ms;
+}
+
+#send-post{
+    width: 60px;
+    height: 35px;
+    margin-bottom: 5px;
+    margin-right: 10px;
+    background: #71b053;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-family: 'BebasNeue';
+    letter-spacing: 1px;
+    transition: all 400ms;
+    float: right;
+}
+
+#send-post:hover{
+    background: #6ca84f;
+    transform: scale(1.08, 1.08);
+}
+
+#profile-space{
+    float: right;
+    height: 250px;
+    margin: 5px;
+    margin-left: 45px;
+    margin-top: 20px;
+    background: #70b05383;
+    border: 1px solid rgba(3, 3, 3, 0.733);
+    border-radius: 3px;
+    box-shadow: -2px 0px 3px #ccc;
+}
+
+#aside-login {
+    margin: 0 auto;
+}
+
+#aside-login-title{
+    margin: 0 auto;
+    margin-top: 20px;
+    color: rgba(68, 67, 67, 0.5);
+}
+
+.aside-login-input{
+    margin: 0 auto;
+    width: 100%;
+    background-color: transparent;
+    border-left: 0px;
+    border-top: 0px;
+    border-right: 0px;
+    border-bottom: 2px solid rgba(44, 43, 43, 0.658);
+    font-size: 16px;
+    margin-bottom: 20px;
+    outline: none;
+    padding: 0px 20px;
+    height: 50px;
+}
+::placeholder{
+    color: grey;
+}
+
+#aside-login-button{
+    margin: 0 auto;
+    margin-bottom: 15px;
+    background-color: rgba(255, 255, 255, 0.253);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    height: 40px;
+    width: 100%;
+    letter-spacing: 1px;
+    transition: all 300ms;
+}
+#aside-login-button:hover{
+    background: #5685405d;
+}
+
+#profile-space .profile-photo{
+    cursor: pointer;
+    transition: all 400ms;
+}
+
+#profile-space .profile-photo:hover{
+    transform: scale(1.05, 1.05);
+}
+
+
+
+
+#aside-logout{
+    height: 50px;
+    margin: 5px;
+    margin-left: 45px;
+    border: 1px solid rgba(68, 67, 67, 0.5);
+    border-radius: 3px;
+    background: #f8f9fa;
+    box-shadow: -2px 0px 3px #ccc;
+    text-align: center;
+    line-height: 45px;
+    transition: all 300ms;
+}
+
+#aside-logout a{
+    
+    color: rgb(245, 109, 109);
+    text-decoration-color: rgb(245, 109, 109);
+}
+
+#published-content{
+    display: block;
+    float: left;
+    width: 58%;
+}
+
+#published-post, #profile-published-post{
+    margin: 0 auto;
+    padding: 0;
+    margin-top: 20px;
+    margin-left: 20px;
+    /*border: 1px solid rgba(68, 67, 67, 0.5);*/
+    border-radius: 3px;
+    background: #f8f9fa;
+    box-shadow: -1px 5px 5px 2px #ccc;
+}
+
+.posts{
+    width: 100%;
+    margin-top: 0px;
+    border-bottom: 1px solid rgba(173, 173, 173, 0.5);
+    transition: all 300ms;
+}
+
+.posts:hover{
+    cursor: pointer;
+    border-radius: 3px;
+    transform: scale(1.01, 1.02);
+    box-shadow: -10px 5px 15px rgba(0, 0, 0, 0.25);
+}
+
+.user-following-container .posts{
+    border-bottom: 0px;
+}
+
+#users-following .users-following-container .posts:hover{
+    transform: none;
+    box-shadow: none;
+    border-radius: 0px;
+}
+
+.posts .post-name,
+.posts .post-date,
+.posts .post-content,
+.posts .post-photo{
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.posts .post-photo{
+    width: 55px;
+    height: 55px;
+    margin-top: 10px;
+    margin-left: 35px;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: all 300ms;
+}
+
+.posts .post-photo img{
+    width: 60px;
+    height: 60px;
+    margin-top: -13.5px;
+    margin-left: -13px;
+    border-radius: 50%;
+    transition: all 300ms;
+}
+
+.posts .post-photo:hover{
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(rgba(0, 0, 0, 0.219),rgba(0, 0, 0, 0.158));
+}
+
+.user-following-container .posts .post-photo:hover{
+    width: 55px;
+    height: 55px;
+    margin-top: 10px;
+    margin-left: 35px;
+}
+
+.posts .post-photo img:hover{
+    width: 65px;
+    height: 65px;
+}
+
+.user-following-container .posts .post-photo img:hover{
+    width: 60px;
+    height: 60px;
+}
+
+.post-name {
+    margin-left: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.post-name a h6{
+    color: black;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.post-name a{
+    transition: all 100ms;
+}
+
+.post-name a:hover{
+    text-decoration: none;
+    text-shadow: 2px 1px 5px grey;
+}
+
+.post-name span{
+    font-weight:normal;
+    font-size: 15px;
+    color: rgb(91, 112, 131);
+}
+
+.post-date{
+    margin-top: -41px;
+    margin-left: 100px;
+    color: rgb(140, 150, 160);
+    font-size: 11px;
+    font-weight: normal;
+}
+
+.post-content{
+    margin-left: 95px;
+    margin-top: -20px;
+    margin-bottom: 0px;
+    padding-right: 140px;
+    color: black;
+    font-size: 17px;
+}
+
+.post-buttons{
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.like-post, .fav-post, .num-likes, .edit-post-link, .in-like-post{
+    margin-right: 15px;
+    margin-left: -10px;
+}
+
+.edit-post-link a{
+    color: #71b053;
+}
+
+.like-post a{
+    font-family:'icons';
+    text-decoration: none;
+    color: grey;
+    transition: all 400ms;
+}
+
+.in-like-post a{
+    font-family:'icons';
+    text-decoration: none;
+    color: rgba(228, 13, 13, 0.863);
+    transition: all 400ms;
+}
+
+.in-like-post-new a{
+    font-family:'icons';
+    text-decoration: none;
+    color: rgba(228, 13, 13, 0.863);
+    transition: all 400ms;
+}
+
+.like-post a:hover{
+    /*font-size: 17px;*/
+    color: grey;
+}
+
+.like-post a:hover{
+    /*font-size: 17px;*/
+    color: rgba(228, 13, 13, 0.863);
+}
+
+
+.fav-post a{
+    font-family:'icons';
+    text-decoration: none;
+    color: #ccc;
+    transition: all 300ms;
+}
+
+.fav-post a:hover{
+    /*font-size: 17px;*/
+    color: rgba(221, 221, 16, 0.945);
+}
+
+.pagination{
+    width: 100%;
+    margin: 10px;
+    margin-left: 59px;
+    margin-top: 15px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#pagination-content{
+    width: 100%;
+    font-family: 'TrebuchetMS';
+    font-size: 16px;
+    text-shadow: 2px 1px 2px #ccc;
+}
+
+#pagination-content a{
+    text-decoration: none;
+    color: #71b053;
+    transition: all 600ms;
+}
+
+#pagination-content a:hover{
+    font-size: 16.6px;
+    color: #52773f;
+}
+
+.profile-info{
+    width: 60%;
+    margin: 0 auto;
+    background: #f8f9fa;
+    border: 1px solid rgba(68, 67, 67, 0.5);
+    border-radius: 3px;
+    box-shadow: -2px 0px 3px #ccc;
+}
+
+.profile-photo{
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.profile-photo img{
+    width: 105px;
+    height:100px;
+    padding-right: 5px;
+    border-radius: 50%;
+}
+
+.profile-name, .profile-username,
+ .profile-user-info, .follow-button, 
+ .edit-profile-button, .unfollow-button{
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.profile-user-info h6 span{
+    margin-left: 10px;
+}
+
+#follow-button, #edit-profile-button, #unfollow-button{
+    width: 100px;
+    padding: 3px;
+    border: none;
+    border-radius: 3px;
+    color: whitesmoke;
+    background: #71b053;
+    margin-bottom: 20px;
+    transition: all 300ms;
+}
+
+#follow-button:hover, #edit-profile-button:hover,
+#unfollow-button:hover{
+    background: #557c42;
+}
+
+#profile-published-content{
+    width: 75%;
+    margin: 0 auto;
+    margin-right: 155px;
+    margin-bottom: 50px;
+}
+
+#edit-modal-post{
+    display: none; /* Hidden by default */
+    position:fixed; /* Stay in place */
+    margin-top: 0 auto;
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    overflow-y: initial;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    animation: edit-post-animation 200ms linear;
+}
+
+@keyframes edit-post-animation{
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 0.4;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+#modal-content{
+    width: 35%;
+    margin: 0 auto;
+    margin-top: 100px;
+    border-radius: 6px;
+    background: white;
+    transition: all 300ms;
+}
+
+#modal-content .row{
+    margin: 0;
+}
+
+#edit-post-link{
+    transition: all 300ms;
+}
+
+#modal-content #post-title,
+#modal-content #cancel-edit-post{
+    margin: 3px 0px 0px 0px;
+    border-bottom: 1px solid rgba(173, 173, 173, 0.5);
+}
+
+#cancel-edit-post{
+    padding: 5px 0px 0px 0px;
+    
+}
+
+#cancel-edit-post a{
+    margin: 0 auto;
+    text-decoration: none;
+    color: gray;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+#modal-content #postEditContent{
+    min-height: 175px;
+    max-height: 500px;
+    overflow: visible;
+    overflow-y: scroll;
+}
+
+#modal-content #edit-post-button{
+    margin: 0 auto;
+    height: 60px;
+    background: #71b053;
+    border-radius: 0px 0px 5px 5px;
+    text-decoration: none;
+    text-align: center;
+    transition: all 300ms;
+}
+
+#modal-content #edit-post-button:hover{
+    background: #557c42;
+}
+
+#modal-content #edit-post-button h2{
+    color: white;
+    margin-top: 11px;
+    font-weight: bold;
+    font-family: 'BebasNeue';
+    letter-spacing: 1px;
+    text-shadow: -1px 5px 5px 2px #ccc;
+    cursor: pointer;
+}
+
+
+
+

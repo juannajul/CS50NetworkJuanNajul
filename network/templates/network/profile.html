@@ -1,0 +1,179 @@
+{% extends 'network/layout.html' %}
+{% load static %}
+
+{% block body %}
+
+<section class="content">
+
+    <div class="container">
+        <div class="row">
+            <div class="profile-info">
+                <div class="row">
+                    <div class="profile-photo">
+                        <img src="{{profile_user.profile_image.url}}" alt="">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="profile-name">
+                        <h4>{{profile_user.first_name}} {{profile_user.last_name}}</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="profile-username">
+                        <h6>@{{profile_user.username}}</h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="profile-user-info">
+                        <h6>
+                            <span id="profile-posts">{{num_posts}} Posts</span>
+                            <span id="profile-followers">{{profile_user.followers.count}} Followers</span>
+                            <span id="profile-following">{{profile_user.following.count}} Following</span>
+
+                        </h6>
+                    </div>
+                </div>
+                {% if profile_user != current_user %}
+                <div class="row">
+                    {% if user_is_following_profileuser == False%}
+                    <div class="follow-button">
+                        <form action="{% url 'profile' username=profile_user.username %}" method="POST">
+                            {% csrf_token %}
+                            <button id="follow-button" name="follow_btn">Follow</button>
+                        </form>
+                    </div>
+                    {% else %}
+                    <div class="unfollow-button">
+                        <form action="{% url 'profile' username=profile_user.username %}" method="POST">
+                            {% csrf_token %}
+                            <button id="unfollow-button" name="unfollow_btn">Unfollow</button>
+                        </form>
+                    </div>
+                    {% endif %}
+                </div>
+                {% elif profile_user == current_user %}
+                <div class="row">
+                    <div class="edit-profile-button">
+                        <form action="" method="POST">
+                            <button id="edit-profile-button">Edit Profile</button>
+                        </form>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div id="profile-published-content">
+        <div class="container">
+            <div class="row">
+                <div id="profile-published-post" class="col-12">
+                    {% for post in profile_posts%}
+                    <div class="posts">
+                        <div class="row">
+                            <div class="post-photo" class="col-2">
+                                <img src="{{post.user.profile_image.url}}" alt="" />
+                            </div>
+                            <div class="post-name col-6">
+                                    <h6>{{post.user.first_name}} {{post.user.last_name}} <span class="post-username">@{{post.user.username}}</span></h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="post-date col-12">{{post.created_at|date:"SHORT_DATE_FORMAT"}}</p>
+                        </div>
+                        <div class="row" data-contentid ="{{post.id}}">
+                            <p class="post-content col-12" >{{post.content|linebreaksbr}}</p>
+                            
+                        </div>
+                        <div class="row">
+                            <div class="post-buttons col-12">
+                                <span class="num-likes id_num_likes{{post.id}}">{{post.likes.count}} Likes</span>
+                                {% if request.user.is_authenticated %}
+                                <span class="{% if request.user in post.likes.all %}in-like-post{% else %}like-post{% endif %} id_color_like{{post.id}}">
+                                    <a id="like-post-link" data-postid="{{ post.id }}">N</a>
+                                </span>
+                                <span class="fav-post"><a href="">R</a></span>
+                                {% endif %}
+                                {% if profile_user == current_user %}
+                                    <span class="edit-post-link"><a id="edit-post-link" data-postid="{{ post.id }}">Edit</a></span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <div class="row col-12">
+                        <div id="edit-modal-post" class="col-12">
+                            <div id="modal-content" class="edit-modal-content">
+                                <div class="row">
+                                    <div id="post-title" class="col-11">
+                                        <h2>Edit Post</h2>
+                                    </div>
+                                    <div id="cancel-edit-post" class="col-1">
+                                        <a id="cancel-edit-post-link">X</a>    
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div id="post-form" class="form-group col-12">
+                                        <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+                                        class="form-control"
+                                        id="postEditContent"
+                                        rows="1"
+                                        maxlength="280"
+                                        name="content"
+                                        placeholder="What's on your mind?"
+                                        ></textarea>
+                                    </div>
+                                </div>
+                                <div id="edit-content-post-button" class="row">
+                                    <a id="edit-post-button" class="col-12">
+                                        <h2>Edit Post</h2>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>  
+                    
+                </div>
+                <div class="pagination">
+                    <div id="pagination-content">
+
+                        <span class="step-links">
+                        {% if profile_posts.has_previous %}
+
+                            <a href="?page=1">&laquo; First</a>
+                            <a href="?page={{ profile_posts.previus_page_number }}">Previus</a>
+
+                        {% endif %}
+
+                        <span class="current">
+                            Page {{ profile_posts.number }} of {{ profile_posts.paginator.num_pages }}.
+                        </span>
+
+                        {% if profile_posts.has_next %}
+
+                            <a href="?page={{ profile_posts.next_page_number }}">Next</a>
+                            <a href="?page={{ profile_posts.paginator.num_pages }}">Last &raquo;</a>
+
+                        {% endif %}
+
+                    </span>
+
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    
+
+</section>
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'network/profile.js' %}"></script>
+    <script src="{% static 'network/like_post.js' %}"></script>
+{% endblock %}
